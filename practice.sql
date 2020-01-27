@@ -747,3 +747,34 @@ select * from employees order by emp_no limit 11,2 ;
 
 
 
+create table test_table1000(
+data1 int not null,
+data2 int not null,
+constraint pk1 primary key(data1)
+);
+
+create table test_table2000(
+data1 int not null,
+data3 int not null,
+constraint fk1 foreign key(data1) references test_table1000(data1)
+);
+
+insert into test_table1000(data1, data2) values(1,10);
+insert into test_table1000(data1, data2) values(2,20);
+insert into test_table1000(data1, data2) values(3,30);
+
+
+select * from test_table1000;
+
+
+insert into test_table2000(data1, data3) values(1,100);
+insert into test_table2000(data1, data3) values(2,200);
+insert into test_table2000(data1, data3) values(3,300);
+
+
+select * from test_table2000;
+
+select * from test_table2000 as b,  test_table1000 as a where a.data1 = b.data1;
+
+
+
