@@ -774,7 +774,41 @@ insert into test_table2000(data1, data3) values(3,300);
 
 select * from test_table2000;
 
-select * from test_table2000 as b,  test_table1000 as a where a.data1 = b.data1;
+select a.data1, a.data2, b.data3 from test_table2000 as b,  test_table1000 as a where a.data1 = b.data1;
+
+create view test_view1
+as
+select a.data1, a.data2, b.data3 from test_table2000 as b,  test_table1000 as a where a.data1 = b.data1;
+
+select * from test_view1;
 
 
+insert into test_table1000(data1, data2) values(4,40);
+insert into test_table2000(data1, data3) values(4,400);
+
+select * from test_view1;
+
+drop view test_view1;
+
+
+use employees;
+
+
+select * from departments;
+select * from dept_emp;
+
+
+# inner join
+select *
+from departments
+inner join dept_emp on
+departments.dept_no = dept_emp.dept_no;
+
+select * from test_table1000;
+select * from test_table2000;
+
+select * 
+from test_table1000 
+inner join test_table2000 on
+test_table1000.data1 = test_table2000.data1
 
