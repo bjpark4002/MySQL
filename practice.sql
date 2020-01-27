@@ -500,3 +500,30 @@ update test_table1 set data3 = 11.123;
 select * from test_table1;
 update test_table1 set data1 = 110 where data1 = 100;
 
+
+select * from test_table1;
+delete from test_table1 where data1 = 101;
+
+delete from test_table1;
+
+
+select * from test_table1;
+
+insert into test_table1 (data1, data2, data3) values(100, "string1", 1.123);
+insert into test_table1 (data1, data2) values(101, 'string2');
+insert into test_table1 values(102,'string3',11.11);
+insert into test_table1 (data1,data2) values(103,'string4');
+insert into test_table1 (data1,data3) values(104,15.22);
+select * from test_table1;
+
+create table test_table2
+as
+select * from test_table1;
+
+select * from test_table2;
+
+delete from test_table2;
+
+select * from test_table2;
+rollback;
+
