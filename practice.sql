@@ -570,3 +570,180 @@ rollback;
 select * from test_table2; 
 
 
+show tables;
+
+rename table test_table2 to tt2;
+
+show tables;
+
+desc tt2;
+alter table tt2 modify data2 varchar(100);
+
+alter table tt2 change data10  data1 int;
+alter table tt2 change data1 data10 int;
+
+alter table tt2 add data4 int;
+
+desc tt2;
+
+alter table tt2 drop data4;
+desc tt2;
+
+show tables;
+
+create table tem
+as 
+select * from tt2;
+
+show tables;
+
+drop tables tem;
+
+show tables;
+
+
+
+create table test_table10(
+data1 int not null
+);
+
+insert into test_table10 (data1) values(10);
+insert into test_table10 values(11);
+insert into test_table10 (data1) values(12);
+
+select * from test_table10;
+
+
+create table test_table20(
+data1 int,
+data2 int not null,
+constraint pk1 primary key(data1)
+);
+select * from test_table20;
+
+insert into test_table20 (data1,data2) values(10, 100);
+insert into test_table20 (data1,data2) values(20, 200);
+insert into test_table20 (data1,data2) values(30, 300);
+
+select * from test_table20;
+
+insert into test_table20 (data1,data2) values(10, 400);
+insert into test_table20 (data1,data2) values(null, 400);
+insert into test_table20 (data2) values(400);
+
+
+ create table test_table30(
+ data1 int,
+ data2 int,
+ constraint pk2 primary key(data1),
+ constraint fk2 foreign key(data2) references test_table20(data1)
+ );
+select * from test_table20;
+
+insert into test_table30 (data1, data2) values( 1, 10);
+insert into test_table30 (data1, data2) values( 2, 20);
+insert into test_table30 (data1, data2) values( 3, 30);
+insert into test_table30 (data1, data2) values( 4, 40);
+insert into test_table30 (data1, data2) values( 5, null);
+insert into test_table30 (data1) values(6);
+
+select * from test_table30 order by data1;
+
+create table test_table40(
+data1 int,
+data2 int not null,
+constraint uk1 unique(data1), 
+constraint uk2 unique(data2)
+);
+
+insert into test_table40 (data1,data2) values( 1,10);
+insert into test_table40 (data1,data2) values( 2,0);
+
+insert into test_table40 (data1,data2) values(3,30);
+select * from test_table40;
+
+update test_table40 set data2 = 20 where data2 = 0;
+select * from test_table40;
+
+
+
+create table test_table50(
+data1 int,
+data2 int not null,
+unique(data1), 
+unique(data2)
+);
+
+insert into test_table50 (data1,data2) values( 1,10);
+insert into test_table50 (data1,data2) values( 2,0);
+insert into test_table50 (data1,data2) values(3,30);
+insert into test_table50 (data1,data2) values(null,40);
+select * from test_table50; 
+
+
+
+create table test_table6(
+data1 int not null,
+data2 int not null,
+constraint chk1 check(data1 > 10),
+constraint chk2 check(data2 in(10,20,30))
+);
+
+insert into test_table6 (data1,data2) values(101,20);
+insert into test_table6 (data1,data2) values(11,10);
+insert into test_table6 values(13,30);
+
+
+show tables;
+rename table test_table6 to test_table60;
+
+savepoint aa;
+create table test_table70(
+data1 int not null default 1,
+data2 int not null default 2
+);
+
+select * from test_table70;
+insert into test_table70 values();
+
+select * from test_table70;
+
+
+create table test_table80(
+data1 int not null,
+data2 int not null,
+data3 int not null,
+constraint pk1 primary key(data1)
+);
+
+insert into test_table80 (data1,data2,data3) values(1,10,100);
+insert into test_table80 (data1,data2,data3) values(3,30,300);
+select * from test_table80;
+
+
+
+create table test_table90(
+data1 int auto_increment,
+data2 int not null,
+data3 int not null,
+constraint pk1 primary key(data1)
+);
+
+insert into test_table90 (data1,data2,data3) values(-1,10,100);
+
+select * from test_table90;
+insert into test_table90 (data2, data3) values(11,101);
+insert into test_table90 (data1,data2,data3) values(3,12,102);
+insert into test_table90 (data2, data3) values(13,103);
+
+
+
+use employees;
+
+select * from employees order by emp_no;
+select * from employees order by emp_no limit 0, 10;
+select * from employees order by emp_no limit 11,2 ;
+
+
+
+
