@@ -533,3 +533,9 @@ select * from test_table2;
 commit;
 rollback;
 select * from test_table2;
+
+select * from test_table2;
+
+insert into test_table2 (data1, data2, data3) values (100, 'string1', 11.11);
+insert into test_table2 (data1, data2, data3) values (200, 'string2', 22.22);
+insert into test_table2 (data1, data2, data3) values (300, 'string3', 33.33);
