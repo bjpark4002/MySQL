@@ -488,3 +488,15 @@ select dept_no from departments;
 select * from dept3;
 
 
+use test_db;
+
+desc test_table1;
+
+insert into test_table1 (data1, data2, data3) values (100,'string1', 10.123);
+insert into test_table1 (data1,data2) values(101,'string2');
+select * from test_table1;
+
+update test_table1 set data3 = 11.123;
+select * from test_table1;
+update test_table1 set data1 = 110 where data1 = 100;
+
