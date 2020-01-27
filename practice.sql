@@ -539,3 +539,34 @@ select * from test_table2;
 insert into test_table2 (data1, data2, data3) values (100, 'string1', 11.11);
 insert into test_table2 (data1, data2, data3) values (200, 'string2', 22.22);
 insert into test_table2 (data1, data2, data3) values (300, 'string3', 33.33);
+
+select * from test_table2;
+
+commit;
+
+select * from test_table2;
+update test_table2 set data2 = 'string3New' where data1 = 300;
+savepoint aa;
+select * from test_table2;
+delete from test_table2 where data1 = 100;
+select * from test_table2;
+rollback to aa;
+
+select * from test_table2;
+
+
+commit;
+
+
+select * from test_table2;
+delete from test_table2;
+select * from test_table2;
+rollback;
+select * from test_table2;  
+
+# truncate 은 rollback 으로 돌아갈 수 없다.
+truncate test_table2;
+rollback;
+select * from test_table2; 
+
+
