@@ -527,3 +527,9 @@ delete from test_table2;
 select * from test_table2;
 rollback;
 
+select * from test_table2;
+delete from test_table2;
+select * from test_table2;
+commit;
+rollback;
+select * from test_table2;
