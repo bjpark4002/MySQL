@@ -807,8 +807,66 @@ departments.dept_no = dept_emp.dept_no;
 select * from test_table1000;
 select * from test_table2000;
 
-select * 
-from test_table1000 
-inner join test_table2000 on
-test_table1000.data1 = test_table2000.data1
+insert into test_table2000 (data1, data3) values(5,1);
+
+
+
+select a.data1, a.data2
+from test_table1000 as a
+inner join test_table2000 as b on
+a.data1 = b.data1;
+
+select a.data1, a.data2
+from test_table1000 as a
+right outer join test_table2000 as b on
+test_table1000.data1 = test_table2000.data1;
+
+
+
+create table join1(
+data1 int,
+data2 int,
+data3 int
+
+);
+create table join2(
+data1 int,
+data2 int,
+data3 int
+
+);
+
+insert into join1 (data1,data2,data3) values(1,2,3);
+insert into join1 (data1,data2,data3) values(2,3,4);
+insert into join1 (data1,data2,data3) values(3,4,5);
+insert into join1 (data1,data2,data3) values(6,2,1);
+
+select * from join1;
+
+
+
+insert into join2 (data1,data2,data3) values(1,21,36);
+insert into join2 (data1,data2,data3) values(2,24,45);
+insert into join2 (data1,data2,data3) values(11,51,57);
+insert into join2 (data1,data2,data3) values(82,24,17);
+
+select * from join2;
+
+
+select * from join1
+inner join join2 
+on join1.data1 = join2.data1;
+
+
+select * from join1
+left outer join join2
+on join1.data1 = join2.data1;
+
+select * from join1
+right outer join join2
+on join1.data1 = join2.data1;
+
+
+
+
 
