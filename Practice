@@ -1,0 +1,83 @@
+
+USE Northwind;
+
+/* Q1 */
+SELECT TerritoryDescription FROM Territories WHERE TerritoryDescription LIKE 'Santa%' OR TerritoryDescription LIKE '%Santa' OR TerritoryDescription LIKE '%Santa%';
+
+/* Q2 */
+SELECT TerritoryDescription FROM Territories WHERE TerritoryDescription LIKE 'C%';
+/* Q3 */
+SELECT TerritoryDescription FROM Territories WHERE TerritoryDescription LIKE 'boro%' OR TerritoryDescription LIKE '%boro' OR TerritoryDescription LIKE '%boro%';
+/* Q4 */
+SELECT ContactName, ContactTitle FROM Customers WHERE ContactTitle LIKE 'Owner%' OR ContactTitle LIKE '%Owner%' OR ContactTitle LIKE '%Owner';
+/* Q5 */
+SELECT CompanyName, HomePage FROM Suppliers WHERE HomePage IS NOT NULL;
+/* Q6 */
+SELECT CompanyName, HomePage FROM Suppliers WHERE HomePage IS NULL;
+/* Q7 */
+SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice >= 50.00;
+/* Q8 */
+SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice <10.00;
+/* Q9 */
+SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice <=10.00;
+/* Q10 */
+SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice BETWEEN 15 AND 20;
+/* Q11 */
+SELECT ProductName, UnitsOnOrder FROM Products WHERE UnitsOnOrder>0;
+/* Q12 */
+SELECT FirstName, LastName, DATEDIFF(YY, BirthDate, GETDATE()) AS Age FROM Employees;
+/* Q13 */
+SELECT FirstName, LastName, DATEDIFF(YY, HireDate, GETDATE()) AS Age FROM Employees;
+/* Q14 */
+SELECT SUM(A.Adds )  AS FreightTotal FROM (SELECT SUM(Freight) AS Adds FROM Orders GROUP BY EmployeeID) AS A;
+/* Q15 */
+SELECT SUM(A.Adds )  AS FreightTotal FROM (SELECT SUM(Freight) AS Adds FROM Orders WHERE OrderDate >= '1996' AND OrderDate <'1997' GROUP BY EmployeeID) AS A;
+/* Q16 */
+SELECT SUM(A.Adds )  AS FreightTotal FROM (SELECT SUM(Freight) AS Adds FROM Orders WHERE OrderDate >= '1997-01-01' AND OrderDate <'1998-01-01' GROUP BY EmployeeID) AS A;
+/* Q17 */
+SELECT SUM(A.Adds )  AS FreightTotal FROM (SELECT SUM(Freight) AS Adds FROM Orders WHERE OrderDate between'1998-01-01' AND '1998-12-31' GROUP BY EmployeeID) AS A;
+/* Q18 */
+SELECT OrderID, ShipCountry FROM Orders WHERE ShipCountry IN ('Switzerland', 'Venezuela', 'Austria');
+/* Q19 */
+SELECT DISTINCT ShipCity FROM Orders WHERE ShippedDate <= GETDATE() AND ShipCountry IN('Belgium', 'Mexico','Sweden');
+/* Q20 */
+
+/* Q21 */
+
+/* Q22 */
+
+/* Q23 */
+
+/* Q24 */
+
+/* Q25 */
+
+/* Q26 */
+
+/* Q27 */
+
+/* Q28 */
+
+/* Q29 */
+
+/* Q30 */
+
+/* Q31 */
+
+/* Q32 */
+
+/* Q33 */
+
+/* Q34 */
+
+/* Q35 */
+
+/* Q36 */
+
+/* Q37 */
+
+/* Q38 */
+
+/* Q39 */
+
+/* Q40 */
